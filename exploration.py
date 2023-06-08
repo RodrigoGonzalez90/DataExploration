@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-import screeninfo
+# import screeninfo
 import plotly.express as px
 
 
@@ -26,10 +26,10 @@ def cargar():
     files = st.file_uploader("Datos para el análisis.", accept_multiple_files=True)
     return files
 
-def get_screen_size():
-    screen_info = screeninfo.get_monitors()[0]
-    width, height = screen_info.width, screen_info.height
-    return width, height
+# def get_screen_size():
+#     screen_info = screeninfo.get_monitors()[0]
+#     width, height = screen_info.width, screen_info.height
+#     return width, height
 
 def create_scatter_plot(df, x_column, y_column, selected_columns):
     fig = px.scatter(df, x=x_column, y=y_column)
@@ -61,7 +61,7 @@ def create_line_plot(df, x_column, y_column, selected_columns):
 
     
 files = cargar()
-screen_width, screen_height = get_screen_size()
+# screen_width, screen_height = get_screen_size()
 
 if files:
 
@@ -89,8 +89,8 @@ if files:
 
             if dfs:
                 df_selected = pd.concat(dfs, axis=1)
-                st.dataframe(df_selected, height=int(screen_height * 0.8), width=int(screen_width * 0.8))
-
+#                 st.dataframe(df_selected, height=int(screen_height * 0.8), width=int(screen_width * 0.8))
+                st.dataframe(df_selected)
                 selected_columns = st.multiselect("Seleccionar columnas comenzando por la variable independiente (X) y luego las variables dependientes(Y)", options=df_selected.columns.tolist(), key=f'{uploaded_file}+1')
 
                 dtypes = df_selected[selected_columns].dtypes
@@ -118,7 +118,7 @@ if files:
 
                     if fig is not None:
                         # Modifica el tamaño del gráfico
-                        fig.update_layout(width=int(screen_width * 0.8), height=int(screen_height * 0.8))
+#                         fig.update_layout(width=int(screen_width * 0.8), height=int(screen_height * 0.8))
                         st.plotly_chart(fig)
                 else:
                     st.warning("Debe seleccionar al menos dos columnas para graficar.")
