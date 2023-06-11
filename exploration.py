@@ -59,7 +59,7 @@ def create_line_plot(df, x_column, y_column, selected_columns):
 
     return fig
   
- def calculate_difference(df_selected, selected_columns):
+def calculate_difference(df_selected, selected_columns):
     difference_df = df_selected[selected_columns].diff()
     return difference_df
 
