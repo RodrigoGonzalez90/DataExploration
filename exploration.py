@@ -58,6 +58,10 @@ def create_line_plot(df, x_column, y_column, selected_columns):
         fig.add_scatter(x=df[x_column], y=df[column], mode='lines', name=column)
 
     return fig
+  
+ def calculate_difference(df_selected, selected_columns):
+    difference_df = df_selected[selected_columns].diff()
+    return difference_df
 
     
 files = cargar()
@@ -120,6 +124,10 @@ if files:
                         # Modifica el tamaño del gráfico
 #                         fig.update_layout(width=int(screen_width * 0.8), height=int(screen_height * 0.8))
                         st.plotly_chart(fig)
+  
+                    if st.button("Calcular diferencia"):
+                        difference_df = calculate_difference(df_selected, selected_columns)
+                        st.dataframe(difference_df)
                 else:
                     st.warning("Debe seleccionar al menos dos columnas para graficar.")
 
