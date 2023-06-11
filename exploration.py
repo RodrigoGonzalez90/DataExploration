@@ -103,13 +103,13 @@ if files:
 
                     tipo_grafico = st.selectbox(
                         label='Seleccionar tipo de gráfico',
-                        options=['Dispercion', 'Barras', 'Lineas'],
+                        options=['Dispersion', 'Barras', 'Lineas'],
                         key=f'{uploaded_file}+2'
                     )
 
                     fig = None
 
-                    if tipo_grafico == 'Dispercion':
+                    if tipo_grafico == 'Dispersion':
                         fig = create_scatter_plot(df_selected, x_column, y_column, selected_columns)
                     elif tipo_grafico == 'Barras':
                         fig = create_bar_plot(df_selected, x_column, y_column, selected_columns)
