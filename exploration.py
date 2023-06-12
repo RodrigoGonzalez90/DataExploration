@@ -39,7 +39,7 @@ def create_scatter_plot(df, x_column, y_column, selected_columns):
         for column in selected_columns[2:]:
             fig.add_scatter(x=df[x_column], y=df[column], mode='markers', name=column)
             total_sum = df[column].sum()
-            fig.add_annotation(x=1, y=total_sum, text=f"Suma Total: {total_sum}", showarrow=False)
+            fig.add_annotation(x=df[x_column], y=total_sum, text=f"Suma Total: {total_sum}", showarrow=False)
     
     return fig
 
@@ -51,7 +51,7 @@ def create_bar_plot(df, x_column, y_column, selected_columns):
     for column in selected_columns[2:]:
         fig.add_bar(x=df[x_column], y=df[column], name=column)
         total_sum = df[column].sum()
-        fig.add_annotation(x=1, y=total_sum, text=f"Suma Total: {total_sum}", showarrow=False)
+        fig.add_annotation(x=df[x_column], y=total_sum, text=f"Suma Total: {total_sum}", showarrow=False)
     
     return fig
 
@@ -61,7 +61,7 @@ def create_line_plot(df, x_column, y_column, selected_columns):
     for column in selected_columns[2:]:
         fig.add_scatter(x=df[x_column], y=df[column], mode='lines', name=column)
         total_sum = df[column].sum()
-        fig.add_annotation(x=1, y=total_sum, text=f"Suma Total: {total_sum}", showarrow=False)
+        fig.add_annotation(x=df[x_column], y=total_sum, text=f"Suma Total: {total_sum}", showarrow=False)
 
     return fig
   
