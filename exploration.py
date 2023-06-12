@@ -38,6 +38,8 @@ def create_scatter_plot(df, x_column, y_column, selected_columns):
         # Agrega los conjuntos de datos adicionales como trazos en la figura
         for column in selected_columns[2:]:
             fig.add_scatter(x=df[x_column], y=df[column], mode='markers', name=column)
+            total_sum = df[column].sum()
+            fig.add_annotation(x=1, y=total_sum, text=f"Suma Total: {total_sum}", showarrow=False)
     
     return fig
 
@@ -48,6 +50,8 @@ def create_bar_plot(df, x_column, y_column, selected_columns):
     # Agrega los conjuntos de datos adicionales como trazos en la figura
     for column in selected_columns[2:]:
         fig.add_bar(x=df[x_column], y=df[column], name=column)
+        total_sum = df[column].sum()
+        fig.add_annotation(x=1, y=total_sum, text=f"Suma Total: {total_sum}", showarrow=False)
     
     return fig
 
@@ -56,12 +60,14 @@ def create_line_plot(df, x_column, y_column, selected_columns):
     # Agrega los conjuntos de datos adicionales como trazos en la figura
     for column in selected_columns[2:]:
         fig.add_scatter(x=df[x_column], y=df[column], mode='lines', name=column)
+        total_sum = df[column].sum()
+        fig.add_annotation(x=1, y=total_sum, text=f"Suma Total: {total_sum}", showarrow=False)
 
     return fig
   
-def calculate_difference(df_selected, selected_columns):
-    difference_df = df_selected[selected_columns].diff()
-    return difference_df
+# def calculate_difference(df_selected, selected_columns):
+#     difference_df = df_selected[selected_columns].diff()
+#     return difference_df
 
     
 files = cargar()
@@ -127,9 +133,9 @@ if files:
 #                         fig.update_layout(width=int(screen_width * 0.8), height=int(screen_height * 0.8))
                         st.plotly_chart(fig)
   
-                    if st.button("Calcular diferencia"):
-                        difference_df = calculate_difference(df_selected, selected_columns)
-                        st.dataframe(difference_df)
+#                     if st.button("Calcular diferencia"):
+#                         difference_df = calculate_difference(df_selected, selected_columns)
+#                         st.dataframe(difference_df)
                 else:
                     st.warning("Debe seleccionar al menos dos columnas para graficar.")
 
