@@ -87,7 +87,9 @@ if files:
                     st.table(pd.DataFrame(info))
                     # Agregar sufijo numérico a las columnas
                     suffix = f"{suffix_counter:02d}"  # Utiliza un número secuencial como sufijo
-                    df_selected.columns = [col + "_" + suffix for col in df_selected.columns]
+                    file_name = uploaded_file.name.split(".")[0]  # Obtiene el nombre del archivo sin extensión
+                    df_selected.columns = [file_name + "_" + col + "_" + suffix for col in df_selected.columns]
+                    #df_selected.columns = [col + "_" + suffix for col in df_selected.columns]
                     dfs.append(df_selected)
                     suffix_counter += 1
 
