@@ -33,7 +33,7 @@ def cargar():
 
 def create_scatter_plot(df, x_column, y_column, selected_columns):
     fig = px.scatter(df, x=x_column, y=y_column)
-    fig.update_layout(width=900)
+    fig.update_layout(width=1300)
      # Calcula la suma total de la columna original
     original_sum = df[y_column].sum()
     # Agrega la anotación de la suma total de la columna original en la esquina superior derecha
@@ -54,7 +54,7 @@ def create_scatter_plot(df, x_column, y_column, selected_columns):
 
 def create_bar_plot(df, x_column, y_column, selected_columns):
     fig = px.bar(df, x=x_column, y=y_column, barmode='group')
-    fig.update_layout(width=900)
+    fig.update_layout(width=1300)
      # Calcula la suma total de la columna original
     original_sum = df[y_column].sum()
     # Agrega la anotación de la suma total de la columna original en la esquina superior derecha
@@ -73,7 +73,7 @@ def create_bar_plot(df, x_column, y_column, selected_columns):
 
 def create_line_plot(df, x_column, y_column, selected_columns):
     fig = px.line(df, x=x_column, y=y_column)
-    fig.update_layout(width=900)
+    fig.update_layout(width=1300)
     # Calcula la suma total de la columna original
     original_sum = df[y_column].sum()
     # Agrega la anotación de la suma total de la columna original en la esquina superior derecha
