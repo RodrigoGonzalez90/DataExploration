@@ -60,7 +60,8 @@ def create_line_plot(df, x_column, y_column, selected_columns):
     # Calcula la suma total de la columna original
     original_sum = df[y_column].sum()
     # Agrega la anotación de la suma total de la columna original
-    fig.add_annotation(x=df[x_column].values[0], y=df[y_column].values[0],
+    # Agrega la anotación de la suma total de la columna original en la esquina superior derecha
+    fig.add_annotation(xref='paper', yref='paper', x=0.95, y=0.9, 
                        text=f"Suma Total ({y_column}): {original_sum}", showarrow=False)
     # Agrega los conjuntos de datos adicionales como trazos en la figura
     for column in selected_columns[2:]:
