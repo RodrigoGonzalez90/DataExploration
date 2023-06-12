@@ -33,11 +33,12 @@ def cargar():
 
 def create_scatter_plot(df, x_column, y_column, selected_columns):
     fig = px.scatter(df, x=x_column, y=y_column)
+    fig.update_layout(width=900)
      # Calcula la suma total de la columna original
     original_sum = df[y_column].sum()
     # Agrega la anotación de la suma total de la columna original en la esquina superior derecha
     fig.add_annotation(xref='paper', yref='paper', x=0.95, y=0.9, 
-                       text=f"Suma Total ({y_column}): {original_sum}", showarrow=False)
+                       text=f"Total ({y_column}): {original_sum}", showarrow=False)
     # Verifica si hay más de dos columnas seleccionadas
     if len(selected_columns) > 2:
         # Agrega los conjuntos de datos adicionales como trazos en la figura
@@ -46,18 +47,19 @@ def create_scatter_plot(df, x_column, y_column, selected_columns):
             column_sum = df[column].sum()
             # Agrega la anotación de la suma total de la columna adicional debajo de la anterior
             fig.add_annotation(xref='paper', yref='paper', x=0.95, y=0.9 - (selected_columns.index(column) * 0.1), 
-                           text=f"Suma Total ({column}): {column_sum}", showarrow=False)
+                           text=f"Total ({column}): {column_sum}", showarrow=False)
     
     return fig
 
 
 def create_bar_plot(df, x_column, y_column, selected_columns):
     fig = px.bar(df, x=x_column, y=y_column, barmode='group')
+    fig.update_layout(width=900)
      # Calcula la suma total de la columna original
     original_sum = df[y_column].sum()
     # Agrega la anotación de la suma total de la columna original en la esquina superior derecha
     fig.add_annotation(xref='paper', yref='paper', x=0.95, y=0.9, 
-                       text=f"Suma Total ({y_column}): {original_sum}", showarrow=False)
+                       text=f"Total ({y_column}): {original_sum}", showarrow=False)
     # Agrega los conjuntos de datos adicionales como trazos en la figura
     if len(selected_columns) > 2:
         for column in selected_columns[2:]:
@@ -65,12 +67,13 @@ def create_bar_plot(df, x_column, y_column, selected_columns):
             column_sum = df[column].sum()
             # Agrega la anotación de la suma total de la columna adicional debajo de la anterior
             fig.add_annotation(xref='paper', yref='paper', x=0.95, y=0.9 - (selected_columns.index(column) * 0.1), 
-                               text=f"Suma Total ({column}): {column_sum}", showarrow=False)
+                               text=f"Total ({column}): {column_sum}", showarrow=False)
     
     return fig
 
 def create_line_plot(df, x_column, y_column, selected_columns):
     fig = px.line(df, x=x_column, y=y_column)
+    fig.update_layout(width=900)
     # Calcula la suma total de la columna original
     original_sum = df[y_column].sum()
     # Agrega la anotación de la suma total de la columna original en la esquina superior derecha
